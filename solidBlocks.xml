@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!-- 不知道utf8会不会搞事情 时刻准备换编码 -->
+<solidBlocks>
+  <solid name = "示例模板">
+    <!--上面的name改为你需要自定义的物品-->
+    <separable><!--是否可拆分（true/false）--></separable>
+    <!--当且仅当可拆分时才填写以下内容-->
+    <scLength><!--固体合成表的长度 数字--></scLength>
+    <solidCraftTable>
+      <!--这里填写固体合成表的各个单个内容 格式为sc01~scxx 固体物品名字-->
+    </solidCraftTable>
+    <fcLength><!--流体合成表的长度--></fcLength>
+    <fluidCraftTable>
+      <!--这里填写流体合成表的各个单个内容 格式为fc01~fcxx 流体物品名字-->
+    </fluidCraftTable>
+    <singleTimeReturn><!--单次合成所得到的数量 数字--></singleTimeReturn>
+  </solid>
+
+
+  <solid name = "黑钢粉">
+    <separable>true</separable>
+    <scLength>5</scLength>
+    <solidCraftTable>
+      <sc01>钢粉</sc01>
+      <sc02>钢粉</sc02>
+      <sc03>钢粉</sc03>
+      <sc04>黑青铜粉</sc04>
+      <sc05>镍粉</sc05>
+    </solidCraftTable>
+    <fcLength>0</fcLength>
+    <fluidCraftTable></fluidCraftTable>
+    <singleTimeReturn>5</singleTimeReturn>
+  </solid>
+</solidBlocks>
