@@ -5,7 +5,11 @@
 #include<algorithm>
 #include<string>
 #include<stack>
+#ifdef __CYGWIN__
+#include <unistd.h>
+#else
 #include <windows.h>
+#endif
 #include "tinyxml2.h"
 #include "fluidItems.h"
 #include "solidItems.h"

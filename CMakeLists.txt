@@ -12,5 +12,6 @@ add_executable(Calculator_In_CLion main.cpp
         solidItems.cpp
         solidItems.h
         tinyxml2.h
-        tinyxml2.cpp )
+        tinyxml2.cpp
+        solidBlocks.xml)
 

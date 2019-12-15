@@ -3,7 +3,8 @@
 
 
 Initializer::Initializer() {
-    this->_solidInitXML.LoadFile(R"(F:\Custom Mod\Calculator In CLion\cmake-build-debug\solidBlocks.xml)");
+    int flag = 0;
+    this->_solidInitXML.LoadFile(R"(solidBlocks.xml)");
     //接下来只需要把树里的所有内容全部收进非流体数组里
     if(_solidInitXML.Error()){
         _solidInitXML.PrintError();
@@ -21,26 +22,40 @@ Initializer::Initializer() {
                 switch (solidStrToSwitchNum(tempElement->Name())){
                     case 0:
                         allSolidItems[nNumOfSolidItems]->replaceItemName(tempElement->GetText());
+                        std::cout<<"名字修改成功"<<std::endl;
                         break;
                     case 1:
                         allSolidItems[nNumOfSolidItems]->replaceIsRawMaterial(strcmp(tempElement->GetText(),"true"));
+                        std::cout<<"bool修改成功"<<std::endl;
                         break;
                     case 2:
-                        int nNum;
-                        nNum = strtol(tempElement->GetText(),nullptr,10);
-                        allSolidItems[nNumOfSolidItems]->replaceSolidLength(nNum);
+                        int nNum2;
+                        nNum2 = strtol(tempElement->GetText(),nullptr,10);
+                        allSolidItems[nNumOfSolidItems]->replaceSolidLength(nNum2);
+                        std::cout<<"长度1修改成功"<<std::endl;
                         break;
                     case 3:
-
+                        /*TODO:
+                         * 把字符串塞进数组
+                         * 之后再议 因为还要从树里走一层
+                         * */
                         break;
                     case 4:
-
+                        int nNum4;
+                        nNum4 = strtol(tempElement->GetText(), nullptr,10);
+                        allSolidItems[nNumOfSolidItems]->replaceFluidLength(nNum4);
+                        std::cout<<"长度2修改成功"<<std::endl;
                         break;
                     case 5:
-
+                        /*TODO:
+                         * 同3
+                         * */
                         break;
                     case 6:
-
+                        int nNum6;
+                        nNum6 = strtol(tempElement->GetText(), nullptr,10);
+                        allSolidItems[nNumOfSolidItems]->replaceSingleTimeReturn(nNum6);
+                        std::cout<<"合成量修改成功"<<std::endl;
                         break;
                     default:
                         std::cout<<"Error member name!"<<std::endl;
@@ -48,11 +63,9 @@ Initializer::Initializer() {
                 }
             }
             nNumOfSolidItems++;
-
+            flag++;
         }
     }
-    /*std::cout<<tempElement->Name()<<std::endl;
-    std::cout<<tempElement->FirstChildElement()->Name()<<std::endl;*/
     /*基本结构如下：
      *这个基本结构有问题 需要重新考量
      */

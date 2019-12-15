@@ -29,6 +29,7 @@ public:
 	void replaceFluidCrafttable(fluidItems* aNewFluidCrafttable);
 	void replaceSingleTimeReturn(int nNewSingleTimeReturn);
 	void replaceIsRawMaterial(bool bNewIsRawMaterial);
+	void solidOutput();
 	~solidItems();
 };
 

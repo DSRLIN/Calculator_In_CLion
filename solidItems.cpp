@@ -94,10 +94,40 @@ void solidItems::replaceIsRawMaterial(bool bNewIsRawMaterial)
 	this->bIsRawMaterial = bNewIsRawMaterial;
 }
 
+void solidItems::solidOutput() {
+    if(!this->strItemName.empty()){
+        std::cout<<"本物品的名字为："<<this->getItemName()<<std::endl;
+    }else{
+        std::cout<<"这是一个空物品 没有名字"<<std::endl;
+        return;
+    }
+    std::cout<<"固体合成表长度为："<<this->getSCLength()<<std::endl;
+    if(this->aSolidCrafttable){
+        for(int i = 0;i < this->nLengthofSC;i++){
+            std::cout<<aSolidCrafttable[i].getItemName()<<std::endl;
+        }
+    }else{
+        std::cout<<"空固体合成数组！"<<std::endl;
+        return;
+    }
+    std::cout<<"流体合成表长度为："<<this->getFCLength()<<std::endl;
+    if(this->aFluidCrafttable){
+        for(int i = 0;i < this->nLengthofFC;i++){
+            std::cout<<aFluidCrafttable[i].getItemName()<<std::endl;
+        }
+    }else{
+        std::cout<<"空流体合成数组！"<<std::endl;
+        return;
+    }
+    std::cout<<"单次输出最少得到"<<this->getSingleTimeReturn()<<"个物品"<<std::endl;
+}
+
 solidItems::~solidItems(){
 	delete this->aFluidCrafttable;
 	delete this->aSolidCrafttable;
 }
+
+
 
 
 
