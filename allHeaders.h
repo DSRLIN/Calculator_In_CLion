@@ -5,6 +5,7 @@
 #include<algorithm>
 #include<string>
 #include<stack>
+#include <list>
 #ifdef __CYGWIN__
 #include <unistd.h>
 #else
@@ -15,5 +16,5 @@
 #include "solidItems.h"
 #include "Initializer.h"
 
-extern solidItems** allSolidItems;
+extern solidItems**allSolidItems;
 extern int nNumOfSolidItems;

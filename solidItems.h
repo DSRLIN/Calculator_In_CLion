@@ -13,7 +13,7 @@ public:
 	//构造（巨大抽象）
 	solidItems();
 	solidItems(std::string strItemName,solidItems* aSolidCrafttable, fluidItems* aFluidCrafttable, int nLengthofSC,int nLengthofFC,int nSingleTimeReturn,bool bIsRawMaterial);
-	solidItems(solidItems& item);
+	solidItems(const solidItems& item);
 	//一切的接口与修改……
 	std::string getItemName();
 	solidItems* getSolidCrafttable();

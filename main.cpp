@@ -1,6 +1,6 @@
 #include "allHeaders.h"
 int nNumOfSolidItems = 0;
-solidItems** allSolidItems;
+solidItems**allSolidItems;
 int main() {
     system("chcp 65001 > nul");
     Initializer in;

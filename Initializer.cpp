@@ -3,7 +3,7 @@
 
 
 Initializer::Initializer() {
-    int flag = 0;
+    std::list<solidItems> solidItemList;
     this->_solidInitXML.LoadFile(R"(solidBlocks.xml)");
     //接下来只需要把树里的所有内容全部收进非流体数组里
     if(_solidInitXML.Error()){
@@ -15,23 +15,24 @@ Initializer::Initializer() {
         return;
     }else{
         XMLElement* solidElements = rootElement->FirstChildElement();
-        for(XMLElement* tempElement = solidElements->FirstChildElement();tempElement->NextSiblingElement() == nullptr;
-        solidElements = solidElements->NextSiblingElement()){
-            allSolidItems[nNumOfSolidItems] = new solidItems;
-            for(;tempElement->NextSiblingElement() != nullptr;tempElement = tempElement->NextSiblingElement()){
+        for(XMLElement* tempElement = solidElements->FirstChildElement();
+            tempElement->NextSiblingElement() != nullptr;
+            solidElements = solidElements->NextSiblingElement()){
+            auto* tmpSolidItem = new solidItems;
+            for(;tempElement->NextSiblingElement() == nullptr;tempElement = tempElement->NextSiblingElement()){
                 switch (solidStrToSwitchNum(tempElement->Name())){
                     case 0:
-                        allSolidItems[nNumOfSolidItems]->replaceItemName(tempElement->GetText());
+                        tmpSolidItem->replaceItemName(tempElement->GetText());
                         std::cout<<"名字修改成功"<<std::endl;
                         break;
                     case 1:
-                        allSolidItems[nNumOfSolidItems]->replaceIsRawMaterial(strcmp(tempElement->GetText(),"true"));
+                        tmpSolidItem->replaceIsRawMaterial(strcmp(tempElement->GetText(),"true"));
                         std::cout<<"bool修改成功"<<std::endl;
                         break;
                     case 2:
                         int nNum2;
                         nNum2 = strtol(tempElement->GetText(),nullptr,10);
-                        allSolidItems[nNumOfSolidItems]->replaceSolidLength(nNum2);
+                        tmpSolidItem->replaceSolidLength(nNum2);
                         std::cout<<"长度1修改成功"<<std::endl;
                         break;
                     case 3:
@@ -43,7 +44,7 @@ Initializer::Initializer() {
                     case 4:
                         int nNum4;
                         nNum4 = strtol(tempElement->GetText(), nullptr,10);
-                        allSolidItems[nNumOfSolidItems]->replaceFluidLength(nNum4);
+                        tmpSolidItem->replaceFluidLength(nNum4);
                         std::cout<<"长度2修改成功"<<std::endl;
                         break;
                     case 5:
@@ -54,7 +55,7 @@ Initializer::Initializer() {
                     case 6:
                         int nNum6;
                         nNum6 = strtol(tempElement->GetText(), nullptr,10);
-                        allSolidItems[nNumOfSolidItems]->replaceSingleTimeReturn(nNum6);
+                        tmpSolidItem->replaceSingleTimeReturn(nNum6);
                         std::cout<<"合成量修改成功"<<std::endl;
                         break;
                     default:
@@ -62,13 +63,16 @@ Initializer::Initializer() {
                         break;
                 }
             }
+            solidItemList.push_back(*tmpSolidItem);
             nNumOfSolidItems++;
-            flag++;
+        }
+        allSolidItems = new solidItems*[nNumOfSolidItems];
+        for(int i = 0;i<nNumOfSolidItems;i++){
+            allSolidItems[i] = new solidItems(solidItemList.front());
+            solidItemList.pop_front();
         }
     }
-    /*基本结构如下：
-     *这个基本结构有问题 需要重新考量
-     */
+
 }
 void Initializer::solidReadFromFile(const std::string& strCommentString) {
     //我自己目前都不知道这个玩意有没有用了
