@@ -2,11 +2,62 @@
 #include "Initializer.h"
 
 Initializer::Initializer() {
-    this->_solidInitXML.LoadFile("solidBlocks.xml");
+    this->_solidInitXML.LoadFile(R"(F:\Custom Mod\Calculator In CLion\cmake-build-debug\solidBlocks.xml)");
     //接下来只需要把树里的所有内容全部收进非流体数组里
+    if(_solidInitXML.Error()){
+        _solidInitXML.PrintError();
+    }
+    XMLElement* rootElement = _solidInitXML.RootElement();
+    if(!rootElement){
+        std::cout<<"empty"<<std::endl;
+        return;
+    }else{
+        XMLElement* solidElements = rootElement->FirstChildElement();
+        for(XMLElement* tempElement = solidElements->FirstChildElement();tempElement->NextSiblingElement() == nullptr;
+        solidElements = solidElements->NextSiblingElement()){
+            allSolidItems[nNumOfSolidItems] = new solidItems;
+            for(;tempElement->NextSiblingElement() != nullptr;tempElement = tempElement->NextSiblingElement()){
+                switch (solidStrToSwitchNum(tempElement->Name())){
+                    case 0:
+                        allSolidItems[nNumOfSolidItems]->replaceItemName(tempElement->GetText());
+                        break;
+                    case 1:
+                        allSolidItems[nNumOfSolidItems]->replaceIsRawMaterial(strcmp(tempElement->GetText(),"true"));
+                        break;
+                    case 2:
+                        int nNum;
+                        nNum = strtol(tempElement->GetText(),nullptr,10);
+                        allSolidItems[nNumOfSolidItems]->replaceSolidLength(nNum);
+                        break;
+                    case 3:
 
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
+
+                        break;
+                    default:
+                        std::cout<<"Error member name!"<<std::endl;
+                        break;
+                }
+            }
+            nNumOfSolidItems++;
+
+        }
+    }
+    /*std::cout<<tempElement->Name()<<std::endl;
+    std::cout<<tempElement->FirstChildElement()->Name()<<std::endl;*/
+    /*基本结构如下：
+     *这个基本结构有问题 需要重新考量
+     */
 }
 void Initializer::solidReadFromFile(const std::string& strCommentString) {
+    //我自己目前都不知道这个玩意有没有用了
     std::fstream solidText;
     solidText.open("solidBlocks.txt",std::ios::in);
     if(!solidText) {

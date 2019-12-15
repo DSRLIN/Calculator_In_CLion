@@ -23,8 +23,10 @@ public:
 	int getSingleTimeReturn();
 	bool getIsRawMaterial();
 	void replaceItemName(std::string strNewItemName);
-	void replaceSolidCrafttable(int nNewLengthofSC,solidItems* aNewSolidCrafttable);
-	void replaceFluidCrafttable(int nNewLengthofFC,fluidItems* aNewFluidCrafttable);
+    void replaceSolidLength(int nNewLengthofSC);
+	void replaceSolidCrafttable(solidItems* aNewSolidCrafttable);
+    void replaceFluidLength(int nNewLengthofFC);
+	void replaceFluidCrafttable(fluidItems* aNewFluidCrafttable);
 	void replaceSingleTimeReturn(int nNewSingleTimeReturn);
 	void replaceIsRawMaterial(bool bNewIsRawMaterial);
 	~solidItems();

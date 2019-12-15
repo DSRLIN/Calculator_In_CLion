@@ -6,6 +6,7 @@
 #include<string>
 #include<stack>
 #include "tinyxml2.h"
+using namespace tinyxml2;
 class Initializer
     //顺带一提 这个玩意仅初始化一个非流体数组
     //流体数组用另外一个加载器

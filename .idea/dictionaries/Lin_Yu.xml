@@ -2,9 +2,13 @@
   <dictionary name="Lin Yu">
     <words>
       <w>chcp</w>
+      <w>cout</w>
       <w>crafttable</w>
+      <w>endl</w>
+      <w>fcxx</w>
       <w>lengthof</w>
       <w>nmsl</w>
+      <w>scxx</w>
     </words>
   </dictionary>
 </component>

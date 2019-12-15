@@ -1,6 +1,8 @@
 #include <utility>
 
 #include "allHeaders.h"
+#include "solidItems.h"
+
 
 solidItems::solidItems(){
 	this->strItemName = "NULL";
@@ -67,13 +69,19 @@ void solidItems::replaceItemName(std::string strNewItemName){
 	this->strItemName = std::move(strNewItemName);
 }
 
-void solidItems::replaceSolidCrafttable(int nNewLengthofSC, solidItems* aNewSolidCrafttable){
-	this->nLengthofSC = nNewLengthofSC;
+void solidItems::replaceSolidLength(int nNewLengthofSC) {
+    this->nLengthofSC = nNewLengthofSC;
+}
+
+void solidItems::replaceSolidCrafttable(solidItems* aNewSolidCrafttable){
 	this->aSolidCrafttable = aNewSolidCrafttable;
 }
 
-void solidItems::replaceFluidCrafttable(int nNewLengthofFC, fluidItems* aNewFluidCrafttable){
-	this->nLengthofFC = nNewLengthofFC;
+void solidItems::replaceFluidLength(int nNewLengthofFC) {
+    this->nLengthofFC = nNewLengthofFC;
+}
+
+void solidItems::replaceFluidCrafttable(fluidItems* aNewFluidCrafttable){
 	this->aFluidCrafttable = aNewFluidCrafttable;
 }
 
@@ -90,3 +98,7 @@ solidItems::~solidItems(){
 	delete this->aFluidCrafttable;
 	delete this->aSolidCrafttable;
 }
+
+
+
+
