@@ -3,6 +3,8 @@ project(Calculator_In_CLion)
 
 set(CMAKE_CXX_STANDARD 14)
 
+file(COPY solidBlocks.xml DESTINATION \\)
+
 add_executable(Calculator_In_CLion main.cpp
         allHeaders.h
         fluidItems.cpp
