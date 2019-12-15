@@ -35,6 +35,25 @@ private:
     tinyxml2::XMLDocument _solidInitXML;
 public:
     Initializer(); //tinyXML2这个货不支持=的重载 我能怎么办
+    static int solidStrToSwitchNum(const std::string& strSolid){
+        if(strSolid == "name"){
+            return 0;
+        }else if(strSolid == "separable"){
+            return 1;
+        }else if(strSolid == "scLength"){
+            return 2;
+        }else if(strSolid == "solidCraftTable"){
+            return 3;
+        }else if(strSolid == "fcLength"){
+            return 4;
+        }else if(strSolid == "fluidCraftTable"){
+            return 5;
+        }else if(strSolid == "singleTimeReturn"){
+            return 6;
+        }else{
+            return -1;
+        }
+    }
     void solidReadFromFile(const std::string& strCommentString = "//");
 };
 
