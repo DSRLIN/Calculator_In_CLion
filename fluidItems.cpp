@@ -14,7 +14,7 @@ fluidItems::fluidItems()
 
 fluidItems::fluidItems(std::string strItemName, solidItems* aSolidCrafttable, fluidItems* aFluidCrafttable, int nLengthofSC, int nLengthofFC, int nSingleTimeReturn)
 {
-	this->strItemName = std::move(strItemName);
+	this->strItemName = strItemName;
 	this->nLengthofSC = nLengthofSC;
 	this->nLengthofFC = nLengthofFC;
 	this->aSolidCrafttable = aSolidCrafttable;
@@ -64,7 +64,7 @@ int fluidItems::getSingleTimeReturn()
 
 void fluidItems::replaceItemName(std::string strNewItemName)
 {
-	this->strItemName = std::move(strNewItemName);
+	this->strItemName = strNewItemName;
 }
 
 void fluidItems::replaceSolidCrafttable(int nNewLengthofSC, solidItems* aNewSolidCrafttable)

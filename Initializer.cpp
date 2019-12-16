@@ -13,66 +13,73 @@ Initializer::Initializer() {
     if(!rootElement){
         std::cout<<"empty"<<std::endl;
         return;
-    }else{
-        XMLElement* solidElements = rootElement->FirstChildElement();
-        for(XMLElement* tempElement = solidElements->FirstChildElement();
-            tempElement->NextSiblingElement() != nullptr;
-            solidElements = solidElements->NextSiblingElement()){
-            auto* tmpSolidItem = new solidItems;
-            for(;tempElement->NextSiblingElement() == nullptr;tempElement = tempElement->NextSiblingElement()){
-                switch (solidStrToSwitchNum(tempElement->Name())){
-                    case 0:
-                        tmpSolidItem->replaceItemName(tempElement->GetText());
-                        std::cout<<"名字修改成功"<<std::endl;
-                        break;
-                    case 1:
-                        tmpSolidItem->replaceIsRawMaterial(strcmp(tempElement->GetText(),"true"));
-                        std::cout<<"bool修改成功"<<std::endl;
-                        break;
-                    case 2:
-                        int nNum2;
-                        nNum2 = strtol(tempElement->GetText(),nullptr,10);
-                        tmpSolidItem->replaceSolidLength(nNum2);
-                        std::cout<<"长度1修改成功"<<std::endl;
-                        break;
-                    case 3:
-                        /*TODO:
-                         * 把字符串塞进数组
-                         * 之后再议 因为还要从树里走一层
-                         * */
-                        break;
-                    case 4:
-                        int nNum4;
-                        nNum4 = strtol(tempElement->GetText(), nullptr,10);
-                        tmpSolidItem->replaceFluidLength(nNum4);
-                        std::cout<<"长度2修改成功"<<std::endl;
-                        break;
-                    case 5:
-                        /*TODO:
-                         * 同3
-                         * */
-                        break;
-                    case 6:
-                        int nNum6;
-                        nNum6 = strtol(tempElement->GetText(), nullptr,10);
-                        tmpSolidItem->replaceSingleTimeReturn(nNum6);
-                        std::cout<<"合成量修改成功"<<std::endl;
-                        break;
-                    default:
-                        std::cout<<"Error member name!"<<std::endl;
-                        break;
+    }else {
+        XMLElement *solidElements = rootElement->FirstChildElement();
+        while (solidElements) {
+            XMLElement *tempElement = solidElements->FirstChildElement();
+            while (tempElement) {
+                auto *tmpSolidItem = new solidItems;
+                while(tempElement->NextSiblingElement()){
+                    switch (solidStrToSwitchNum(tempElement->Name())) {
+                        case 0:
+                            tmpSolidItem->replaceItemName(tempElement->GetText());
+                            std::cout << "名字修改成功" << std::endl;
+                            tempElement = tempElement->NextSiblingElement();
+                            break;
+                        case 1:
+                            tmpSolidItem->replaceIsRawMaterial(strcmp(tempElement->GetText(), "true"));
+                            std::cout << "bool修改成功" << std::endl;
+                            tempElement = tempElement->NextSiblingElement();
+                            break;
+                        case 2:
+                            int nNum2;
+                            nNum2 = strtol(tempElement->GetText(), nullptr, 10);
+                            tmpSolidItem->replaceSolidLength(nNum2);
+                            std::cout << "长度1修改成功" << std::endl;
+                            tempElement = tempElement->NextSiblingElement();
+                            break;
+                        case 3:
+                            /*TODO:
+                             * 把字符串塞进数组
+                             * 之后再议 因为还要从树里走一层
+                             * */
+                            break;
+                        case 4:
+                            int nNum4;
+                            nNum4 = strtol(tempElement->GetText(), nullptr, 10);
+                            tmpSolidItem->replaceFluidLength(nNum4);
+                            std::cout << "长度2修改成功" << std::endl;
+                            tempElement = tempElement->NextSiblingElement();
+                            break;
+                        case 5:
+                            /*TODO:
+                             * 同3
+                             * */
+                            break;
+                        case 6:
+                            int nNum6;
+                            nNum6 = strtol(tempElement->GetText(), nullptr, 10);
+                            tmpSolidItem->replaceSingleTimeReturn(nNum6);
+                            std::cout << "合成量修改成功" << std::endl;
+                            tempElement = tempElement->NextSiblingElement();
+                            break;
+                        default:
+                            std::cout << "Error member name!" << std::endl;
+                            break;
+                    }
+
                 }
+                solidItemList.push_back(*tmpSolidItem);
+                nNumOfSolidItems++;
             }
-            solidItemList.push_back(*tmpSolidItem);
-            nNumOfSolidItems++;
-        }
-        allSolidItems = new solidItems*[nNumOfSolidItems];
-        for(int i = 0;i<nNumOfSolidItems;i++){
-            allSolidItems[i] = new solidItems(solidItemList.front());
-            solidItemList.pop_front();
+            allSolidItems = new solidItems *[nNumOfSolidItems];
+            for (int i = 0; i < nNumOfSolidItems; i++) {
+                allSolidItems[i] = new solidItems(solidItemList.front());
+                solidItemList.pop_front();
+            }
+            solidElements = solidElements->NextSiblingElement();
         }
     }
-
 }
 void Initializer::solidReadFromFile(const std::string& strCommentString) {
     //我自己目前都不知道这个玩意有没有用了

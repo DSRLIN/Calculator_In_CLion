@@ -15,7 +15,7 @@ solidItems::solidItems(){
 }
 
 solidItems::solidItems(std::string strItemName, solidItems* aSolidCrafttable, fluidItems* aFluidCrafttable, int nLengthofSC, int nLengthofFC, int nSingleTimeReturn,bool bIsRawMaterial){
-	this->strItemName = std::move(strItemName);
+	this->strItemName = strItemName;
     this->bIsRawMaterial = bIsRawMaterial;
     if(!bIsRawMaterial){
         this->nLengthofSC = nLengthofSC;
@@ -66,7 +66,7 @@ bool solidItems::getIsRawMaterial()
 }
 
 void solidItems::replaceItemName(std::string strNewItemName){
-	this->strItemName = std::move(strNewItemName);
+	this->strItemName = strNewItemName;
 }
 
 void solidItems::replaceSolidLength(int nNewLengthofSC) {

@@ -54,6 +54,6 @@ public:
             return -1;
         }
     }
-    void solidReadFromFile(const std::string& strCommentString = "//");
+    static void solidReadFromFile(const std::string& strCommentString = "//");
 };
 
