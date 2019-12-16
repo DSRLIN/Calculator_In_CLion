@@ -2,7 +2,7 @@
 <!-- 不知道utf8会不会搞事情 时刻准备换编码 -->
 <solidBlocks>
   <solid>
-    <name>黑钢粉</name>
+    <name>aaa</name>
     <separable>true</separable>
     <scLength>5</scLength>
     <solidCraftTable>
@@ -13,7 +13,7 @@
       <sc05>镍粉</sc05>
     </solidCraftTable>
     <fcLength>0</fcLength>
-    <fluidCraftTable/>
+    <fluidCraftTable></fluidCraftTable>
     <singleTimeReturn>5</singleTimeReturn>
   </solid>
 

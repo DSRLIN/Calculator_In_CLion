@@ -19,58 +19,75 @@ Initializer::Initializer() {
             XMLElement *tempElement = solidElements->FirstChildElement();
             while (tempElement) {
                 auto *tmpSolidItem = new solidItems;
-                while(tempElement->NextSiblingElement()){
+                while(tempElement){
                     switch (solidStrToSwitchNum(tempElement->Name())) {
                         case 0:
                             tmpSolidItem->replaceItemName(tempElement->GetText());
-                            std::cout << "名字修改成功" << std::endl;
-                            tempElement = tempElement->NextSiblingElement();
+                            //std::cout << "名字修改成功" << std::endl;
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 1:
                             tmpSolidItem->replaceIsRawMaterial(strcmp(tempElement->GetText(), "true"));
-                            std::cout << "bool修改成功" << std::endl;
-                            tempElement = tempElement->NextSiblingElement();
+                            //std::cout << "bool修改成功" << std::endl;
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 2:
                             int nNum2;
                             nNum2 = strtol(tempElement->GetText(), nullptr, 10);
                             tmpSolidItem->replaceSolidLength(nNum2);
-                            std::cout << "长度1修改成功" << std::endl;
-                            tempElement = tempElement->NextSiblingElement();
+                            //std::cout << "长度1修改成功" << std::endl;
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 3:
                             /*TODO:
                              * 把字符串塞进数组
                              * 之后再议 因为还要从树里走一层
                              * */
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 4:
                             int nNum4;
                             nNum4 = strtol(tempElement->GetText(), nullptr, 10);
                             tmpSolidItem->replaceFluidLength(nNum4);
-                            std::cout << "长度2修改成功" << std::endl;
-                            tempElement = tempElement->NextSiblingElement();
+                            //std::cout << "长度2修改成功" << std::endl;
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 5:
                             /*TODO:
                              * 同3
                              * */
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         case 6:
                             int nNum6;
                             nNum6 = strtol(tempElement->GetText(), nullptr, 10);
                             tmpSolidItem->replaceSingleTimeReturn(nNum6);
-                            std::cout << "合成量修改成功" << std::endl;
-                            tempElement = tempElement->NextSiblingElement();
+                            //std::cout << "合成量修改成功" << std::endl;
+                            if(tempElement->NextSiblingElement()) {
+                                tempElement = tempElement->NextSiblingElement();
+                            }
                             break;
                         default:
-                            std::cout << "Error member name!" << std::endl;
+                            //std::cout << "Error member name!" << std::endl;
                             break;
                     }
 
                 }
                 solidItemList.push_back(*tmpSolidItem);
                 nNumOfSolidItems++;
+                break;
             }
             allSolidItems = new solidItems *[nNumOfSolidItems];
             for (int i = 0; i < nNumOfSolidItems; i++) {

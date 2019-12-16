@@ -1,8 +1,7 @@
 #include "allHeaders.h"
 int nNumOfSolidItems = 0;
 solidItems**allSolidItems;
-using namespace std;
-using namespace tinyxml2;
+
 int main() {
     system("chcp 65001 > nul");
     /*tinyxml2::XMLDocument doc;
