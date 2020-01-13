@@ -77,6 +77,8 @@ Initializer::Initializer() {
                             //std::cout << "合成量修改成功" << std::endl;
                             if(tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
+                            }else{
+                                tempElement = nullptr;
                             }
                             break;
                         default:
@@ -87,14 +89,20 @@ Initializer::Initializer() {
                 }
                 solidItemList.push_back(*tmpSolidItem);
                 nNumOfSolidItems++;
+                //solidElements = solidElements->NextSiblingElement();
                 break;
             }
-            allSolidItems = new solidItems *[nNumOfSolidItems];
-            for (int i = 0; i < nNumOfSolidItems; i++) {
-                allSolidItems[i] = new solidItems(solidItemList.front());
-                solidItemList.pop_front();
-            }
+            //上面三行的位置有问题
+            //我需要的是把所有东西都初始化并塞进list以后再把它们转移到一个数组里
+            //而不是初始化一个就塞一次 这会在下面这步new导致严重错误
+            //可以反过来思考
+            //可以把初始化这步放到最后做
             solidElements = solidElements->NextSiblingElement();
+        }
+        allSolidItems = new solidItems *[nNumOfSolidItems];
+        for (int i = 0; i < nNumOfSolidItems; i++) {
+            allSolidItems[i] = new solidItems(solidItemList.front());
+            solidItemList.pop_front();
         }
     }
 }

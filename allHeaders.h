@@ -16,5 +16,5 @@
 #include "solidItems.h"
 #include "Initializer.h"
 
-extern solidItems**allSolidItems;
+extern solidItems** allSolidItems;
 extern int nNumOfSolidItems;

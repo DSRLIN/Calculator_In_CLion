@@ -107,8 +107,7 @@ void solidItems::solidOutput() {
             std::cout<<aSolidCrafttable[i].getItemName()<<std::endl;
         }
     }else{
-        std::cout<<"空固体合成数组！"<<std::endl;
-        return;
+        std::cout<<"空固体合成数组！请考虑是否已经加入了固体合成数组？"<<std::endl;
     }
     std::cout<<"流体合成表长度为："<<this->getFCLength()<<std::endl;
     if(this->aFluidCrafttable){
@@ -116,8 +115,7 @@ void solidItems::solidOutput() {
             std::cout<<aFluidCrafttable[i].getItemName()<<std::endl;
         }
     }else{
-        std::cout<<"空流体合成数组！"<<std::endl;
-        return;
+        std::cout<<"空流体合成数组！请考虑是否已经加入了流体合成数组？"<<std::endl;
     }
     std::cout<<"单次输出最少得到"<<this->getSingleTimeReturn()<<"个物品"<<std::endl;
 }

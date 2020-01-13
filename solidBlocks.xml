@@ -16,22 +16,4 @@
     <fluidCraftTable></fluidCraftTable>
     <singleTimeReturn>5</singleTimeReturn>
   </solid>
-
-  <solid>
-    <name><!--上面的name改为你需要自定义的物品-->示例文本</name>
-    <separable><!--是否可拆分（true/false）--></separable>
-    <!--当且仅当可拆分时才填写以下内容-->
-    <scLength><!--固体合成表的长度 数字--></scLength>
-    <solidCraftTable>
-      <!--这里填写固体合成表的各个单个内容 格式为sc01~scxx 固体物品名字-->
-    </solidCraftTable>
-    <fcLength><!--流体合成表的长度--></fcLength>
-    <fluidCraftTable>
-      <!--这里填写流体合成表的各个单个内容 格式为fc01~fcxx 流体物品名字-->
-    </fluidCraftTable>
-    <singleTimeReturn><!--单次合成所得到的数量 数字--></singleTimeReturn>
-  </solid>
-
-
-
 </solidBlocks>
