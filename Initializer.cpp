@@ -51,13 +51,18 @@ Initializer::Initializer() {
                              * */
                             //固体合成数组
                             auto *solidCraftTable = tempElement->FirstChild();
-                            while (solidCraftTable) {
-                                auto **aCurSolidItemList = new solidItems* [tmpSolidItem->getSCLength()];
-                                for (int i = 0; i < tmpSolidItem->getSCLength(); i++) {
-                                    aCurSolidItemList[i] = new solidItems();
-                                    //在这里我们得到了一个纯NULL的固体物品数组
-                                }
+                            auto **aCurSolidItemList = new solidItems* [tmpSolidItem->getSCLength()];
+                            for (int i = 0; i < tmpSolidItem->getSCLength(); i++) {
+                                aCurSolidItemList[i] = new solidItems();
+                                //在这里我们得到了一个纯NULL的固体物品数组 也可以看成是开辟空间使用的手段
+                                //必要性存疑 不需要的话把这句删了就可
 
+                                //（我为什么不直接把处理过程放进这里来
+                                //（我是sb
+                                //如果写xml的人没有搞事情的话那么xml子树的长度应该和SCLength是一致的
+                                //所以循环次数也应该是一致的
+                                //（这里的注释是从下面拿来的）
+                                //这里是对xml带来的字符串进行处理
                                 //先去写一个匹配函数来 输入字符串 得到固体物品
                                 /*基本思想已经很明确了
                                  * 先把所有的输入内容生成的仅有名字的元素作为自身的合成表
@@ -66,8 +71,13 @@ Initializer::Initializer() {
                                  * 最后由于所有物品全部使用初始化数组中对象的指针
                                  * 可以保证修改后的对象可以反映到每个物品中去
                                  * */
+                                //对每个数组内容进行修改
+                                aCurSolidItemList[i] = getNullSolidItemByName(solidCraftTable.Name);
+
+                                //修改完了指向下一项
                                 solidCraftTable = solidCraftTable->NextSiblingElement();
                             }
+
                             tmpSolidItem->replaceFluidCrafttable(nullptr);
                             if (tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
@@ -161,7 +171,6 @@ void Initializer::solidReadFromFile(const std::string& strCommentString) {
     }
 
 }
-
 solidItems *Initializer::findSolidItemByString(const std::string& strFind) {
     for(int i = 0;i < nNumOfSolidItems;i++){
         if(strFind == allSolidItems[i]->getItemName()){
@@ -171,4 +180,9 @@ solidItems *Initializer::findSolidItemByString(const std::string& strFind) {
     //如果遍历完整个数组但什么都没找到
     auto* nullSolidItem = new solidItems();
     return nullSolidItem;
+}
+
+solidItems *Initializer::getNullSolidItemByName(const std::string &strName) {
+    //需要一个特化的构造函数或者把构造函数加上默认参数
+    return new solidItems(strName);
 }

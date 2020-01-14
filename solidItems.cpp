@@ -26,6 +26,16 @@ solidItems::solidItems(std::string strItemName, solidItems* aSolidCrafttable, fl
     }
 }
 
+solidItems::solidItems(std::string strItemName){
+    this->strItemName = strItemName;
+    this->nLengthofSC = 0;
+    this->nLengthofFC = 0;
+    this->aSolidCrafttable = nullptr;
+    this->aFluidCrafttable = nullptr;
+    this->nSingleTimeReturn = 0;
+    this->bIsRawMaterial = false;
+};
+
 solidItems::solidItems(const solidItems& item){
 	this->strItemName = item.strItemName;
 	this->nLengthofSC = item.nLengthofSC;

@@ -13,6 +13,8 @@ public:
 	//构造（巨大抽象）
 	solidItems();
 	solidItems(std::string strItemName,solidItems* aSolidCrafttable, fluidItems* aFluidCrafttable, int nLengthofSC,int nLengthofFC,int nSingleTimeReturn,bool bIsRawMaterial);
+	//为名字特化的构造函数
+	solidItems(std::string strItemName);
 	solidItems(const solidItems& item);
 	//一切的接口与修改……
 	std::string getItemName();
