@@ -50,16 +50,19 @@ Initializer::Initializer() {
                              * 之后再议 因为还要从树里走一层
                              * */
                             //固体合成数组
-                            auto *solidCraftTable = tempElement->FirstChild();
+                            auto *solidCraftTable = tempElement->FirstChildElement();
                             auto **aCurSolidItemList = new solidItems* [tmpSolidItem->getSCLength()];
                             for (int i = 0; i < tmpSolidItem->getSCLength(); i++) {
+                                if(!solidCraftTable){
+                                    break;
+                                }
                                 aCurSolidItemList[i] = new solidItems();
                                 //在这里我们得到了一个纯NULL的固体物品数组 也可以看成是开辟空间使用的手段
                                 //必要性存疑 不需要的话把这句删了就可
 
                                 //（我为什么不直接把处理过程放进这里来
                                 //（我是sb
-                                //如果写xml的人没有搞事情的话那么xml子树的长度应该和SCLength是一致的
+                                //如果写入xml内容的人没有搞事情的话那么xml子树的长度应该和SCLength是一致的
                                 //所以循环次数也应该是一致的
                                 //（这里的注释是从下面拿来的）
                                 //这里是对xml带来的字符串进行处理
@@ -72,13 +75,13 @@ Initializer::Initializer() {
                                  * 可以保证修改后的对象可以反映到每个物品中去
                                  * */
                                 //对每个数组内容进行修改
-                                aCurSolidItemList[i] = getNullSolidItemByName(solidCraftTable.Name);
+                                aCurSolidItemList[i] = getNullSolidItemByName(solidCraftTable->GetText());
 
                                 //修改完了指向下一项
                                 solidCraftTable = solidCraftTable->NextSiblingElement();
                             }
 
-                            tmpSolidItem->replaceFluidCrafttable(nullptr);
+                            tmpSolidItem->replaceSolidCrafttable(aCurSolidItemList);
                             if (tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
                             }

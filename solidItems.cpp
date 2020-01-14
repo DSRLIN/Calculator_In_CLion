@@ -14,7 +14,7 @@ solidItems::solidItems(){
 	this->bIsRawMaterial = false;
 }
 
-solidItems::solidItems(std::string strItemName, solidItems* aSolidCrafttable, fluidItems* aFluidCrafttable, int nLengthofSC, int nLengthofFC, int nSingleTimeReturn,bool bIsRawMaterial){
+solidItems::solidItems(std::string strItemName, solidItems** aSolidCrafttable, fluidItems** aFluidCrafttable, int nLengthofSC, int nLengthofFC, int nSingleTimeReturn,bool bIsRawMaterial){
 	this->strItemName = strItemName;
     this->bIsRawMaterial = bIsRawMaterial;
     if(!bIsRawMaterial){
@@ -50,11 +50,11 @@ std::string solidItems::getItemName(){
 	return this->strItemName;
 }
 
-solidItems* solidItems::getSolidCrafttable(){
+solidItems** solidItems::getSolidCrafttable(){
 	return this->aSolidCrafttable;
 }
 
-fluidItems* solidItems::getFluidCrafttable(){
+fluidItems** solidItems::getFluidCrafttable(){
 	return this->aFluidCrafttable;
 }
 
@@ -83,7 +83,7 @@ void solidItems::replaceSolidLength(int nNewLengthofSC) {
     this->nLengthofSC = nNewLengthofSC;
 }
 
-void solidItems::replaceSolidCrafttable(solidItems* aNewSolidCrafttable){
+void solidItems::replaceSolidCrafttable(solidItems** aNewSolidCrafttable){
 	this->aSolidCrafttable = aNewSolidCrafttable;
 }
 
@@ -91,7 +91,7 @@ void solidItems::replaceFluidLength(int nNewLengthofFC) {
     this->nLengthofFC = nNewLengthofFC;
 }
 
-void solidItems::replaceFluidCrafttable(fluidItems* aNewFluidCrafttable){
+void solidItems::replaceFluidCrafttable(fluidItems** aNewFluidCrafttable){
 	this->aFluidCrafttable = aNewFluidCrafttable;
 }
 
@@ -114,7 +114,7 @@ void solidItems::solidOutput() {
     std::cout<<"固体合成表长度为："<<this->getSCLength()<<std::endl;
     if(this->aSolidCrafttable){
         for(int i = 0;i < this->nLengthofSC;i++){
-            std::cout<<aSolidCrafttable[i].getItemName()<<std::endl;
+            std::cout<<aSolidCrafttable[i]->getItemName()<<std::endl;
         }
     }else{
         std::cout<<"空固体合成数组！请考虑是否已经加入了固体合成数组？"<<std::endl;
@@ -122,7 +122,7 @@ void solidItems::solidOutput() {
     std::cout<<"流体合成表长度为："<<this->getFCLength()<<std::endl;
     if(this->aFluidCrafttable){
         for(int i = 0;i < this->nLengthofFC;i++){
-            std::cout<<aFluidCrafttable[i].getItemName()<<std::endl;
+            std::cout<<aFluidCrafttable[i]->getItemName()<<std::endl;
         }
     }else{
         std::cout<<"空流体合成数组！请考虑是否已经加入了流体合成数组？"<<std::endl;
