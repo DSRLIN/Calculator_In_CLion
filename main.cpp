@@ -1,7 +1,7 @@
 #include "allHeaders.h"
 int nNumOfSolidItems = 0;
 solidItems**allSolidItems;
-
+std::list<solidCraftMark> solidWaitingList;
 int main() {
     system("chcp 65001 > nul");
     /*tinyxml2::XMLDocument doc;
@@ -29,6 +29,12 @@ int main() {
         }else{
             std::cout<<"空指针！"<<std::endl;
         }
+    }
+    std::cout<<std::endl;
+
+    std::cout<<"等待被修改合成表的队列信息如下："<<std::endl;
+    for (auto & iter : solidWaitingList) {
+        iter.testOutput();
     }
     system("pause");
     return 0;

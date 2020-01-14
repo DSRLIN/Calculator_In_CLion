@@ -76,6 +76,18 @@ Initializer::Initializer() {
                                  * */
                                 //对每个数组内容进行修改
                                 aCurSolidItemList[i] = getNullSolidItemByName(solidCraftTable->GetText());
+                                //别急 这里还要往solidCraftMarkList里录一次东西
+                                //条件是这个东西没有往队列里录过
+                                bool bTestFlag = false;
+                                for (auto & iter : solidWaitingList) {
+                                    if(iter == solidCraftMark(solidCraftTable->GetText(),tmpSolidItem->getItemName())){
+                                        bTestFlag = true;
+                                    }
+                                }
+                                if(!bTestFlag){
+                                    solidWaitingList.emplace_back(solidCraftTable->GetText(),tmpSolidItem->getItemName());
+                                }
+
 
                                 //修改完了指向下一项
                                 solidCraftTable = solidCraftTable->NextSiblingElement();
@@ -126,11 +138,7 @@ Initializer::Initializer() {
                 //solidElements = solidElements->NextSiblingElement();
                 break;
             }
-            //上面三行的位置有问题
-            //我需要的是把所有东西都初始化并塞进list以后再把它们转移到一个数组里
-            //而不是初始化一个就塞一次 这会在下面这步new导致严重错误
-            //可以反过来思考
-            //可以把初始化这步放到最后做
+            //初始化这步放到最后做
             solidElements = solidElements->NextSiblingElement();
         }
         allSolidItems = new solidItems *[nNumOfSolidItems];
