@@ -44,15 +44,36 @@ Initializer::Initializer() {
                                 tempElement = tempElement->NextSiblingElement();
                             }
                             break;
-                        case 3:
+                        case 3: {
                             /*TODO:
                              * 把字符串塞进数组
                              * 之后再议 因为还要从树里走一层
                              * */
-                            if(tempElement->NextSiblingElement()) {
+                            //固体合成数组
+                            auto *solidCraftTable = tempElement->FirstChild();
+                            while (solidCraftTable) {
+                                auto **aCurSolidItemList = new solidItems* [tmpSolidItem->getSCLength()];
+                                for (int i = 0; i < tmpSolidItem->getSCLength(); i++) {
+                                    aCurSolidItemList[i] = new solidItems();
+                                    //在这里我们得到了一个纯NULL的固体物品数组
+                                }
+
+                                //先去写一个匹配函数来 输入字符串 得到固体物品
+                                /*基本思想已经很明确了
+                                 * 先把所有的输入内容生成的仅有名字的元素作为自身的合成表
+                                 * 并且将所有输入内容入队列
+                                 * 最后在所有物品初始化完毕后对队列进行逐个处理
+                                 * 最后由于所有物品全部使用初始化数组中对象的指针
+                                 * 可以保证修改后的对象可以反映到每个物品中去
+                                 * */
+                                solidCraftTable = solidCraftTable->NextSiblingElement();
+                            }
+                            tmpSolidItem->replaceFluidCrafttable(nullptr);
+                            if (tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
                             }
                             break;
+                        }
                         case 4:
                             int nNum4;
                             nNum4 = strtol(tempElement->GetText(), nullptr, 10);
@@ -139,4 +160,15 @@ void Initializer::solidReadFromFile(const std::string& strCommentString) {
         std::cout<<strTemp<<std::endl;
     }
 
+}
+
+solidItems *Initializer::findSolidItemByString(const std::string& strFind) {
+    for(int i = 0;i < nNumOfSolidItems;i++){
+        if(strFind == allSolidItems[i]->getItemName()){
+            return allSolidItems[i];
+        }
+    }
+    //如果遍历完整个数组但什么都没找到
+    auto* nullSolidItem = new solidItems();
+    return nullSolidItem;
 }

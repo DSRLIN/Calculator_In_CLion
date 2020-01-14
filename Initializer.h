@@ -55,5 +55,6 @@ public:
         }
     }
     static void solidReadFromFile(const std::string& strCommentString = "//");
+    static solidItems* findSolidItemByString(const std::string& strFind);
 };
 
