@@ -3,7 +3,7 @@
 
 
 Initializer::Initializer() {
-    std::list<solidItems> solidItemList;
+    std::list<solidItems*> solidItemList;
     this->_solidInitXML.LoadFile(R"(solidBlocks.xml)");
     //接下来只需要把树里的所有内容全部收进非流体数组里
     if(_solidInitXML.Error()){
@@ -121,7 +121,7 @@ Initializer::Initializer() {
                     }
 
                 }
-                solidItemList.push_back(*tmpSolidItem);
+                solidItemList.push_back(tmpSolidItem);
                 nNumOfSolidItems++;
                 //solidElements = solidElements->NextSiblingElement();
                 break;
@@ -135,7 +135,7 @@ Initializer::Initializer() {
         }
         allSolidItems = new solidItems *[nNumOfSolidItems];
         for (int i = 0; i < nNumOfSolidItems; i++) {
-            allSolidItems[i] = new solidItems(solidItemList.front());
+            allSolidItems[i] = solidItemList.front();
             solidItemList.pop_front();
         }
     }
