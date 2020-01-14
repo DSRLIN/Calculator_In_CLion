@@ -197,3 +197,10 @@ solidItems *Initializer::getNullSolidItemByName(const std::string &strName) {
     //需要一个特化的构造函数或者把构造函数加上默认参数
     return new solidItems(strName);
 }
+
+void Initializer::solidWaitingListHandler() {
+    bool bLap = false;
+    if((!solidWaitingList.empty()) || !bLap){
+
+    }
+}

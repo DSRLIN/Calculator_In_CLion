@@ -33,7 +33,7 @@ solidItems::solidItems(std::string strItemName){
     this->aSolidCrafttable = nullptr;
     this->aFluidCrafttable = nullptr;
     this->nSingleTimeReturn = 0;
-    this->bIsRawMaterial = false;
+    this->bIsRawMaterial = true;
 };
 
 solidItems::solidItems(const solidItems& item){
