@@ -135,6 +135,15 @@ solidItems::~solidItems(){
 	delete this->aSolidCrafttable;
 }
 
+void solidItems::replaceItemsInSC(solidItems *pNewSolidItem) {
+    for (int i = 0; i < this->nLengthofSC; ++i) {
+        if(this->aSolidCrafttable[i]->strItemName == pNewSolidItem->getItemName()){
+            //相同则替换
+            this->aSolidCrafttable[i] = pNewSolidItem;
+        }
+    }
+}
+
 
 
 

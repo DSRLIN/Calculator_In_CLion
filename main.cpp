@@ -36,6 +36,10 @@ int main() {
     for (auto & iter : solidWaitingList) {
         iter.testOutput();
     }
+    Initializer::solidWaitingListHandler();
+    for (auto & iter : solidWaitingList) {
+        iter.testOutput();
+    }
     system("pause");
     return 0;
 }

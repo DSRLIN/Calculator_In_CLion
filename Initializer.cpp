@@ -188,9 +188,8 @@ solidItems *Initializer::findSolidItemByString(const std::string& strFind) {
             return allSolidItems[i];
         }
     }
-    //如果遍历完整个数组但什么都没找到
-    auto* nullSolidItem = new solidItems();
-    return nullSolidItem;
+    //如果遍历完整个数组但什么都没找到 则返回一个空指针
+    return nullptr;
 }
 
 solidItems *Initializer::getNullSolidItemByName(const std::string &strName) {
@@ -200,7 +199,29 @@ solidItems *Initializer::getNullSolidItemByName(const std::string &strName) {
 
 void Initializer::solidWaitingListHandler() {
     bool bLap = false;
-    if((!solidWaitingList.empty()) || !bLap){
+    auto iter = solidWaitingList.begin();
+    while((!solidWaitingList.empty()) && (!bLap)){
+        //处理队列中的所有信息
+        solidItems* tempSolidBaseItem = findSolidItemByString(iter->getWaitingItemName());
+        solidItems* tempSolidReplaceItem = findSolidItemByString(iter->getItemName());
+        if(tempSolidBaseItem && tempSolidReplaceItem){
+           //保证两项都找到了才进入处理过程 只需要对指针进行替换就可以了
+           //把baseItem内合成表的空名字替换成replaceItem即可
+           //同样 这个东西成立的前提是写入xml的人没有搞事情
+           tempSolidBaseItem->replaceItemsInSC(tempSolidReplaceItem);
+           auto iterRemove = iter;//这个东西是以指针的形式接下来的吗？是指针就问题大了
+           iter++;
+           solidWaitingList.remove(*iterRemove);
+        }
+        //处理完毕本项后的东西
+        //debug发现的思路问题：
+        //每次处理完后应该移除的是这次处理的内容而不是简单地把头pop掉
 
+        iter++;
+        //草 上面的while写成if了
+        if(iter == solidWaitingList.end()){
+            bLap = true;
+        }
     }
+    std::cout<<"退出！"<<std::endl;
 }

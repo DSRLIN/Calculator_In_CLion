@@ -9,6 +9,14 @@ solidCraftMark::solidCraftMark(std::string strItemName, std::string strWaitingIt
     this->strWaitingItemName = strWaitingItemName;
 }
 
+std::string solidCraftMark::getItemName() {
+    return this->strItemName;
+}
+
+std::string solidCraftMark::getWaitingItemName() {
+    return this->strWaitingItemName;
+}
+
 void solidCraftMark::testOutput() {
     std::cout<<"这是一条测试信息:"<<std::endl;
     std::cout<<"目前项的内容为：";
@@ -20,3 +28,5 @@ bool solidCraftMark::operator==(const solidCraftMark &solidCraftMark1) {
     return (this->strItemName == solidCraftMark1.strItemName) &&
            (this->strWaitingItemName == solidCraftMark1.strWaitingItemName);
 }
+
+

@@ -32,6 +32,7 @@ public:
 	void replaceSingleTimeReturn(int nNewSingleTimeReturn);
 	void replaceIsRawMaterial(bool bNewIsRawMaterial);
 	void solidOutput();
+	void replaceItemsInSC(solidItems* pNewSolidItem);
 	~solidItems();
 };
 
