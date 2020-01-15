@@ -148,6 +148,7 @@ Initializer::Initializer() {
         }
     }
 }
+
 void Initializer::solidReadFromFile(const std::string& strCommentString) {
     //我自己目前都不知道这个玩意有没有用了
     std::fstream solidText;
@@ -182,6 +183,7 @@ void Initializer::solidReadFromFile(const std::string& strCommentString) {
     }
 
 }
+
 solidItems *Initializer::findSolidItemByString(const std::string& strFind) {
     for(int i = 0;i < nNumOfSolidItems;i++){
         if(strFind == allSolidItems[i]->getItemName()){
@@ -216,7 +218,7 @@ void Initializer::solidWaitingListHandler() {
         //处理完毕本项后的东西
         //debug发现的思路问题：
         //每次处理完后应该移除的是这次处理的内容而不是简单地把头pop掉
-
+        //引以为戒
         iter++;
         //草 上面的while写成if了
         if(iter == solidWaitingList.end()){
