@@ -28,6 +28,11 @@ class Initializer
 	//所以只需要根据流体名字及流体数量对数组进行写入即可
 	//那么这就意味着。。。fluidItems的整体推倒重做。。。？
 	//（大概罢
+
+	//所以按这个思路写下去的话
+	//这个合成就没流体合成什么事情了
+	//或者可以新为固体初始化器的05再开一个类？
+	//（开罢
 private:
     tinyxml2::XMLDocument _solidInitXML;
 public:

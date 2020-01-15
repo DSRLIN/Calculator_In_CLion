@@ -87,8 +87,6 @@ Initializer::Initializer() {
                                 if(!bTestFlag){
                                     solidWaitingList.emplace_back(solidCraftTable->GetText(),tmpSolidItem->getItemName());
                                 }
-
-
                                 //修改完了指向下一项
                                 solidCraftTable = solidCraftTable->NextSiblingElement();
                             }
@@ -112,6 +110,10 @@ Initializer::Initializer() {
                             /*TODO:
                              * 同3
                              * */
+                            //这边用的是新写的一个类
+                            //名字为统一取作fluidCraftMark
+                            //针对这个05而特化的
+
                             if(tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
                             }
@@ -211,7 +213,7 @@ void Initializer::solidWaitingListHandler() {
            //把baseItem内合成表的空名字替换成replaceItem即可
            //同样 这个东西成立的前提是写入xml的人没有搞事情
            tempSolidBaseItem->replaceItemsInSC(tempSolidReplaceItem);
-           auto iterRemove = iter;//这个东西是以指针的形式接下来的吗？是指针就问题大了
+           auto iterRemove = iter;//问题解决了 这个东西不是单纯的指针 能当指针用 不过=接下来的东西不是很简单 总之符合我的思考逻辑就是了
            iter++;
            solidWaitingList.remove(*iterRemove);
         }
@@ -225,5 +227,4 @@ void Initializer::solidWaitingListHandler() {
             bLap = true;
         }
     }
-    std::cout<<"退出！"<<std::endl;
 }
