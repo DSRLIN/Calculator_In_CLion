@@ -122,7 +122,7 @@ void solidItems::solidOutput() {
     std::cout<<"流体合成表长度为："<<this->getFCLength()<<std::endl;
     if(this->aFluidCraftMarks){
         for(int i = 0;i < this->nLengthofFC;i++){
-            std::cout<<aFluidCraftMarks[i]->getFluidName()<<std::endl;
+            aFluidCraftMarks[i]->outputCraftMark();
         }
     }else{
         std::cout<<"空流体合成数组！请考虑是否已经加入了流体合成数组？"<<std::endl;

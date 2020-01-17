@@ -120,6 +120,7 @@ Initializer::Initializer() {
                                 //同上 必要性存疑
                                 aFluidItemList[i] = generateFluidByString(fluidCraftMarkTable->GetText());
                                 //循环完成得到的结果直接就可以录进类里
+                                fluidCraftMarkTable = fluidCraftMarkTable->NextSiblingElement();
                             }
                             tmpSolidItem->replaceFluidCraftMarks(aFluidItemList);
                             if(tempElement->NextSiblingElement()) {
@@ -243,10 +244,11 @@ fluidCraftMark* Initializer::generateFluidByString(const std::string& strFluid) 
     int nNameEnd = 0,nValueStart = 0;
     bool bNullFlag = false;
     for (size_t i = 0;i < strFluid.length();i++) {
-        if(i == ' '){
-            nNameEnd = i - 1;
+        if(strFluid[i] == ' '){
+            nNameEnd = i;
             nValueStart = i + 1;
             bNullFlag = true;
+            break;
         }
     }
     if(!bNullFlag){
