@@ -61,5 +61,6 @@ public:
     static solidItems* getNullSolidItemByName(const std::string& strName); //根据物品名称 返回一个仅有名字的对象用来占位
     static void solidWaitingListHandler();
     static fluidCraftMark* generateFluidByString(const std::string& strFluid);
+    static void lastWaitingListHandler();
 };
 

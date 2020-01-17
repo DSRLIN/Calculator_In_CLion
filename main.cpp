@@ -1,6 +1,7 @@
 #include "allHeaders.h"
 int nNumOfSolidItems = 0;
-solidItems**allSolidItems;
+solidItems** allSolidItems;
+std::list<solidItems> listAllSolidItems;
 std::list<solidCraftMark> solidWaitingList;
 int main() {
     system("chcp 65001 > nul");

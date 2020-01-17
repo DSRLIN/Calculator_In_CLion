@@ -260,3 +260,13 @@ fluidCraftMark* Initializer::generateFluidByString(const std::string& strFluid) 
     int nFluidValue = std::stoi(strFluidValue);
     return new fluidCraftMark(strFluidName,nFluidValue);
 }
+
+void Initializer::lastWaitingListHandler() {
+    //都给我滚进stl去（
+    //首先把当前的数组全录进stl
+    for (int i = 0; i < nNumOfSolidItems; ++i) {
+
+    }
+
+
+}
