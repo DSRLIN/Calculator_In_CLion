@@ -45,10 +45,6 @@ Initializer::Initializer() {
                             }
                             break;
                         case 3: {
-                            /*TODO:
-                             * 把字符串塞进数组
-                             * 之后再议 因为还要从树里走一层
-                             * */
                             //固体合成数组
                             auto *solidCraftTable = tempElement->FirstChildElement();
                             auto **aCurSolidItemList = new solidItems* [tmpSolidItem->getSCLength()];
@@ -106,18 +102,31 @@ Initializer::Initializer() {
                                 tempElement = tempElement->NextSiblingElement();
                             }
                             break;
-                        case 5:
-                            /*TODO:
-                             * 同3
-                             * */
+                        case 5:{
                             //这边用的是新写的一个类
                             //名字为统一取作fluidCraftMark
                             //针对这个05而特化的
+                            //才发现自己写过一个结构体
+                            //删掉用类罢
 
+                            //现在直接输入节点内容开始循环即可
+                            auto *fluidCraftMarkTable = tempElement->FirstChildElement();
+                            auto **aFluidItemList = new fluidCraftMark *[tmpSolidItem->getFCLength()];
+                            for (int i = 0; i < tmpSolidItem->getFCLength(); ++i) {
+                                if(!fluidCraftMarkTable){
+                                    break;
+                                }
+                                aFluidItemList[i] = new fluidCraftMark();
+                                //同上 必要性存疑
+                                aFluidItemList[i] = generateFluidByString(fluidCraftMarkTable->GetText());
+                                //循环完成得到的结果直接就可以录进类里
+                            }
+                            tmpSolidItem->replaceFluidCraftMarks(aFluidItemList);
                             if(tempElement->NextSiblingElement()) {
                                 tempElement = tempElement->NextSiblingElement();
                             }
                             break;
+                        }
                         case 6:
                             int nNum6;
                             nNum6 = strtol(tempElement->GetText(), nullptr, 10);
@@ -227,4 +236,25 @@ void Initializer::solidWaitingListHandler() {
             bLap = true;
         }
     }
+}
+
+fluidCraftMark* Initializer::generateFluidByString(const std::string& strFluid) {
+    //基本思路是把字符串拆开成名字字符串和所需的流体数量
+    int nNameEnd = 0,nValueStart = 0;
+    bool bNullFlag = false;
+    for (size_t i = 0;i < strFluid.length();i++) {
+        if(i == ' '){
+            nNameEnd = i - 1;
+            nValueStart = i + 1;
+            bNullFlag = true;
+        }
+    }
+    if(!bNullFlag){
+        return nullptr;
+    }
+    std::string strFluidName,strFluidValue;
+    strFluidName = strFluid.substr(0,nNameEnd);
+    strFluidValue = strFluid.substr(nValueStart,(strFluid.length() - 1));
+    int nFluidValue = std::stoi(strFluidValue);
+    return new fluidCraftMark(strFluidName,nFluidValue);
 }

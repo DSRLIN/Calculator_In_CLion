@@ -12,8 +12,14 @@
       <sc04>黑青铜粉</sc04>
       <sc05>镍粉</sc05>
     </solidCraftTable>
-    <fcLength>0</fcLength>
-    <fluidCraftTable></fluidCraftTable>
+    <fcLength>5</fcLength>
+    <fluidCraftTable>
+      <fc01>水 1000</fc01>
+      <fc02>岩浆 1000</fc02>
+      <fc03>焊锡 250</fc03>
+      <fc04>元始魔力 100</fc04>
+      <fc05>熔融盐 100</fc05>
+    </fluidCraftTable>
     <singleTimeReturn>5</singleTimeReturn>
   </solid>
 </solidBlocks>

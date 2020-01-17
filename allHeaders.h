@@ -17,10 +17,6 @@
 #include "Initializer.h"
 #include "solidCraftMark.h"
 #include "fluidCraftMark.h"
-struct fluids{
-    std::string strName;
-    int nValue; //存放流体量，以mB为单位
-};
 extern solidItems** allSolidItems;
 extern int nNumOfSolidItems;
 extern std::list<solidCraftMark> solidWaitingList;

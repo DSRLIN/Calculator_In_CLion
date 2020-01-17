@@ -18,6 +18,7 @@ public:
     fluidCraftMark(std::string strFluidName,int nCraftDosage);
     std::string getFluidName();
     int getCraftDosage();
+    void outputCraftMark();
     ~fluidCraftMark() = default;
 };
 

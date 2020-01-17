@@ -21,3 +21,8 @@ std::string fluidCraftMark::getFluidName() {
 int fluidCraftMark::getCraftDosage() {
     return this->_nCraftDosage;
 }
+
+void fluidCraftMark::outputCraftMark() {
+    std::cout<<"流体名字为："<<this->_strFluidName<<std::endl;
+    std::cout<<"用量为："<<this->_nCraftDosage<<std::endl;
+}
