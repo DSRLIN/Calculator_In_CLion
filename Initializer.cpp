@@ -263,7 +263,7 @@ fluidCraftMark* Initializer::generateFluidByString(const std::string& strFluid) 
 
 void Initializer::lastHandler() {
     //都给我滚进stl去（
-    //首先把当前的数组全录进stl
+    //首先把当前的数组全录进stl list
     for (int i = 0; i < nNumOfSolidItems; ++i) {
         listAllSolidItems.emplace_back(allSolidItems[i]);
     }

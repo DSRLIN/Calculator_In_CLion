@@ -19,5 +19,5 @@ add_executable(Calculator_In_CLion main.cpp
         solidCraftMark.cpp
         solidCraftMark.h
         fluidCraftMark.cpp
-        fluidCraftMark.h)
+        fluidCraftMark.h CraftSystem.cpp CraftSystem.h)
 

@@ -17,6 +17,7 @@
 #include "Initializer.h"
 #include "solidCraftMark.h"
 #include "fluidCraftMark.h"
+#include "CraftSystem.h"
 extern solidItems** allSolidItems;
 extern int nNumOfSolidItems;
 extern std::list<solidItems*> listAllSolidItems;
