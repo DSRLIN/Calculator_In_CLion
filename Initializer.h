@@ -59,8 +59,8 @@ public:
     static void solidReadFromFile(const std::string& strCommentString = "//");
     static solidItems* findSolidItemByString(const std::string& strFind);  //根据物品名称在整个初始化好的数组内检索同名物品 如果不搞事情的话只会有一个物品
     static solidItems* getNullSolidItemByName(const std::string& strName); //根据物品名称 返回一个仅有名字的对象用来占位
-    static void solidWaitingListHandler();
-    static fluidCraftMark* generateFluidByString(const std::string& strFluid);
-    static void lastWaitingListHandler();
+    static void solidWaitingListHandler(); //根据队列对等待处理的物品进行一定处理
+    static fluidCraftMark* generateFluidByString(const std::string& strFluid); //根据输入的字符串生成流体标记
+    static void lastHandler(); //收尾工作 合并数组
 };
 

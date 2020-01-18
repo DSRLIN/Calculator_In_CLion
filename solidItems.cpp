@@ -111,23 +111,28 @@ void solidItems::solidOutput() {
         std::cout<<"这是一个空物品 没有名字"<<std::endl;
         return;
     }
-    std::cout<<"固体合成表长度为："<<this->getSCLength()<<std::endl;
-    if(this->aSolidCrafttable){
-        for(int i = 0;i < this->nLengthofSC;i++){
-            std::cout<<aSolidCrafttable[i]->getItemName()<<std::endl;
+    if(this->bIsRawMaterial){
+        std::cout<<"本物品为基本材料 无法继续向下展开"<<std::endl;
+    }else {
+        std::cout<<"本物品非基本材料"<<std::endl;
+        std::cout << "固体合成表长度为：" << this->getSCLength() << std::endl;
+        if (this->aSolidCrafttable) {
+            for (int i = 0; i < this->nLengthofSC; i++) {
+                std::cout << aSolidCrafttable[i]->getItemName() << std::endl;
+            }
+        } else {
+            std::cout << "空固体合成数组！请考虑是否已经加入了固体合成数组？" << std::endl;
         }
-    }else{
-        std::cout<<"空固体合成数组！请考虑是否已经加入了固体合成数组？"<<std::endl;
-    }
-    std::cout<<"流体合成表长度为："<<this->getFCLength()<<std::endl;
-    if(this->aFluidCraftMarks){
-        for(int i = 0;i < this->nLengthofFC;i++){
-            aFluidCraftMarks[i]->outputCraftMark();
+        std::cout << "流体合成表长度为：" << this->getFCLength() << std::endl;
+        if (this->aFluidCraftMarks) {
+            for (int i = 0; i < this->nLengthofFC; i++) {
+                aFluidCraftMarks[i]->outputCraftMark();
+            }
+        } else {
+            std::cout << "空流体合成数组！请考虑是否已经加入了流体合成数组？" << std::endl;
         }
-    }else{
-        std::cout<<"空流体合成数组！请考虑是否已经加入了流体合成数组？"<<std::endl;
+        std::cout << "单次输出最少得到" << this->getSingleTimeReturn() << "个物品" << std::endl;
     }
-    std::cout<<"单次输出最少得到"<<this->getSingleTimeReturn()<<"个物品"<<std::endl;
 }
 
 solidItems::~solidItems(){

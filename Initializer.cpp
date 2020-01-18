@@ -261,12 +261,17 @@ fluidCraftMark* Initializer::generateFluidByString(const std::string& strFluid) 
     return new fluidCraftMark(strFluidName,nFluidValue);
 }
 
-void Initializer::lastWaitingListHandler() {
+void Initializer::lastHandler() {
     //都给我滚进stl去（
     //首先把当前的数组全录进stl
     for (int i = 0; i < nNumOfSolidItems; ++i) {
-
+        listAllSolidItems.emplace_back(allSolidItems[i]);
     }
-
-
+    delete []allSolidItems;
+    auto iter = solidWaitingList.begin();
+    for (int j = 0; j < solidWaitingList.size(); ++j) {
+        listAllSolidItems.emplace_back(getNullSolidItemByName(iter->getItemName()));
+        iter++;
+    }
+    solidWaitingList.clear();
 }
