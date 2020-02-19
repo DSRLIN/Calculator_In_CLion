@@ -2,24 +2,43 @@
 <!-- 不知道utf8会不会搞事情 时刻准备换编码 -->
 <solidBlocks>
   <solid>
-    <name>aaa</name>
+    <name>A</name>
     <separable>true</separable>
-    <scLength>5</scLength>
+    <scLength>2</scLength>
     <solidCraftTable>
-      <sc01>钢粉</sc01>
-      <sc02>钢粉</sc02>
-      <sc03>钢粉</sc03>
-      <sc04>黑青铜粉</sc04>
-      <sc05>镍粉</sc05>
+      <sc01>B</sc01>
+      <sc02>C</sc02>
     </solidCraftTable>
-    <fcLength>5</fcLength>
-    <fluidCraftTable>
-      <fc01>水 1000</fc01>
-      <fc02>岩浆 1000</fc02>
-      <fc03>焊锡 250</fc03>
-      <fc04>元始魔力 100</fc04>
-      <fc05>熔融盐 100</fc05>
-    </fluidCraftTable>
-    <singleTimeReturn>5</singleTimeReturn>
+    <fcLength>0</fcLength>
+    <fluidCraftTable></fluidCraftTable>
+    <singleTimeReturn>2</singleTimeReturn>
   </solid>
+
+  <solid>
+    <name>C</name>
+    <separable>true</separable>
+    <scLength>2</scLength>
+    <solidCraftTable>
+      <sc01>F</sc01>
+      <sc02>G</sc02>
+    </solidCraftTable>
+    <fcLength>0</fcLength>
+    <fluidCraftTable></fluidCraftTable>
+    <singleTimeReturn>2</singleTimeReturn>
+  </solid>
+
+  <solid>
+    <name>B</name>
+    <separable>true</separable>
+    <scLength>2</scLength>
+    <solidCraftTable>
+      <sc01>D</sc01>
+      <sc02>E</sc02>
+    </solidCraftTable>
+    <fcLength>0</fcLength>
+    <fluidCraftTable></fluidCraftTable>
+    <singleTimeReturn>2</singleTimeReturn>
+  </solid>
+
+
 </solidBlocks>

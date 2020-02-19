@@ -2,9 +2,7 @@
 // Created by Lin Yu on 2020/1/13.
 //
 
-#ifndef CALCULATOR_IN_CLION_SOLIDCRAFTMARK_H
-#define CALCULATOR_IN_CLION_SOLIDCRAFTMARK_H
-
+#pragma once
 #include <string>
 #include <iostream>
 //简单来说 这个东西就是个存放缺失物品名称和存放缺失物品名称容器的一个类
@@ -24,6 +22,3 @@ public:
     bool operator ==(const solidCraftMark& solidCraftMark1);
     ~solidCraftMark()= default;
 };
-
-
-#endif //CALCULATOR_IN_CLION_SOLIDCRAFTMARK_H

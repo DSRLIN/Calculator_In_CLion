@@ -2,8 +2,7 @@
 // Created by Lin Yu on 2020/1/15.
 //
 
-#ifndef CALCULATOR_IN_CLION_FLUIDCRAFTMARK_H
-#define CALCULATOR_IN_CLION_FLUIDCRAFTMARK_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -21,6 +20,3 @@ public:
     void outputCraftMark();
     ~fluidCraftMark() = default;
 };
-
-
-#endif //CALCULATOR_IN_CLION_FLUIDCRAFTMARK_H

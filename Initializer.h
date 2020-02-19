@@ -62,5 +62,6 @@ public:
     static void solidWaitingListHandler(); //根据队列对等待处理的物品进行一定处理
     static fluidCraftMark* generateFluidByString(const std::string& strFluid); //根据输入的字符串生成流体标记
     static void lastHandler(); //收尾工作 合并数组
+    solidItems* getSolidItemInList(std::string strItemName); //现在就是临时把这个玩意加在这里 鬼知道是我哪里脑子出了问题还是怎么回事
 };
 

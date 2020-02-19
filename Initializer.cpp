@@ -226,12 +226,13 @@ void Initializer::solidWaitingListHandler() {
            auto iterRemove = iter;//问题解决了 这个东西不是单纯的指针 能当指针用 不过=接下来的东西不是很简单 总之符合我的思考逻辑就是了
            iter++;
            solidWaitingList.remove(*iterRemove);
+        }else{
+            iter++;
         }
         //处理完毕本项后的东西
         //debug发现的思路问题：
         //每次处理完后应该移除的是这次处理的内容而不是简单地把头pop掉
         //引以为戒
-        iter++;
         //草 上面的while写成if了
         if(iter == solidWaitingList.end()){
             bLap = true;

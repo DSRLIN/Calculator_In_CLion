@@ -22,3 +22,5 @@ extern solidItems** allSolidItems;
 extern int nNumOfSolidItems;
 extern std::list<solidItems*> listAllSolidItems;
 extern std::list<solidCraftMark> solidWaitingList;
+
+
