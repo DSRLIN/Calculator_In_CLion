@@ -69,4 +69,4 @@
 [@DSRLIN](https://github.com/DSRLIN)
 
 ## 友情鸣谢
-Pharsalia
+[@Pharsalia-174](https://github.com/Pharsalia-174)
