@@ -41,9 +41,9 @@
   * 若scLength或fcLength不为0则为true
   * 你要是真的想加底部原料那就写 反正程序不拦着你
 
-* scLength：合成表中非流体物品的数量
+* scLength：合成表中非流体物品的数量 不得大于99
 
-* solidCraftTable:合成表中非流体物品的名字
+* solidCraftTable:合成表中非流体物品的名字 不得多于99
   * 从sc01开始写到scxx，上下数量应保持一致
 
 * fcLength：合成表中流体物品的数量，应为0
